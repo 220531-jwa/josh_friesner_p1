@@ -1,0 +1,111 @@
+#eeformContainer{
+    margin-top:10vh; 
+    border:solid 2px;
+    border-radius: 20px;
+    padding:5vh;
+    width:50%;
+}
+
+#eeform{
+    /* margin-top:50%; */
+}
+
+#eeMainTitle{
+    margin-bottom:5vh;
+}
+
+#createEETitle{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#submitInfoButt{
+    width:50%;
+    margin:25px 0px 0 25%
+}
+
+.eelbler{
+    margin:1vh
+}
+
+.topBox{
+    border:1px solid black;
+    border-radius: 25px;
+    padding:10px;
+}
+
+#submitInfoButt{
+    width:25%;
+    margin:25px 0px 0 35%
+}
+
+.eeheader{
+
+    text-align:center;
+    margin:1vh 0 0 0
+
+}
+
+.userNameincorOff{
+    display:none;
+}
+.userNameincorOn{
+    display:auto;
+    margin-top:1.5vh;
+}
+
+#eePicSec{
+    margin-top:5vh;
+}
+
+#eePicPreviewTop{
+    /* background-color: blue; */
+    /* display:inline; */
+    margin-top:3vh;
+    margin-left:.3vh;
+    padding:5px;
+    /* margin-left:12.5%; */
+    
+    /* padding:25%; */
+}
+
+#eePicPreviewDiv{
+    align-content: center;
+    margin-left:25%;
+    /* align-content: center; */
+    /* display:block; */
+    /* width:50%;
+    height:50%; */
+}
+
+#somePic{
+    /* display:block; */
+    /* width:50%; */
+    /* height:50%; */
+}
+
+
+
+
+div.polaroid {
+    width: 40%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  img {width: 100%}
+  
+  div.cont {
+    text-align: center;
+    padding: 10px 20px;
+  }
+
+
+  .eePicPreviewOff{
+    display:none;
+  }
+
+  .eePicPreviewOn{
+    display:auto;
+  }
+

@@ -1,0 +1,190 @@
+#topViewsButts{
+    margin-top:6vh;
+    background-color: purple;
+    padding:1vh 25% 1vh 25%;
+}
+
+#eeInfoTopRow{
+    border:solid blue 5px;
+    margin:1vh;
+    /* background-color: magenta; */
+}
+
+
+
+#ViewOpnReqButt{
+    /* color:green; */
+    /* align-self: center; */
+}
+
+#addRequestTop{
+    background-color: green;
+    /* margin-top:5vh; */
+    /* padding-top:1vh; */
+}
+
+#eeCreateReqForm{
+    margin-right:25%;
+    margin-left:25%;
+    margin-bottom:25%;
+    /* padding:25%; */
+}
+
+#frmHdrDv{
+    margin-top:2vh;
+    margin-bottom:2vh;
+    padding-left:25%;
+}
+
+.reqFrmLbl{
+    margin-left:50%;
+    /* overflow: hidden; */
+}
+
+.reqFrmLbldos{
+    text-align: center;
+}
+
+.frmSubHdr{
+    text-align: center;
+    margin-bottom:1vh;
+}
+
+.frmrw{
+    margin-top:1vh;
+    margin-bottom:1vh;
+    border:2px solid black;
+}
+
+.frmMids{
+   background-color: orange;
+   margin-top:1vh;
+    margin-bottom:1vh;
+    border:2px solid black;
+
+}
+
+
+.frmSubrw{
+    background-color: orange;
+    border:2px solid black;
+    margin-bottom:1vh;
+}
+
+
+.clbl{
+    margin:2vh;
+}
+
+.otherMid{
+    margin-bottom:1vh;
+}
+
+.cinpt{
+    width:100%;
+    margin-bottom:1vh;
+}
+
+
+.viewreqtopOff{
+    display: none;
+}
+
+.addreqtop{
+
+}
+
+.off{
+    display: none;
+}
+
+.viewreqtop{
+
+}
+
+.on{
+    display: auto;
+}
+
+/* .addreqtopOn{
+    display: auto;
+} */
+
+.mypen{
+    cursor: pointer;
+    /* margin-right:10vh; */
+}
+.mypen:hover{
+    cursor: pointer;
+    color:green;
+    /* margin-right:10vh; */
+}
+
+
+.Iamoff{
+    display:none;
+}
+
+.IamOn{
+    display:auto;
+}
+
+.penButt{
+    background-color: white;
+    color:green;
+    opacity: 1;
+    border-radius:50%;
+    border:.2vh lightcoral solid;
+    width:50%;
+    height:50%;
+    /* content: "\270E" */
+    /* content: "\F4CB"; */
+}
+
+.penButt::before{
+    /* content: "\F4CB"; */
+    content: "\270E";
+    
+    color:green;
+  }
+
+  .penButt:hover{
+    background-color: black;
+    color:green;
+    opacity: 1;
+    border-radius:50%;
+    border:.2vh lightcoral solid;
+    /* content: "\270E" */
+    /* content: "\F4CB"; */
+}
+
+
+/* .penButt::after{ */
+    /* color:green; */
+    /* content: "\F4CB"; */
+    /* content: "\270E" */
+  /* } */
+
+
+  
+  .viewreqAsstop{
+    display:block;
+    background-color: lightgrey;
+  }
+
+  .viewreqAllAsstop{
+    display:block;
+    background-color: green;
+  }
+
+
+  .off{
+    display:none;
+  }
+
+
+  .newFormDivy{
+    width:50%;
+    border:2px solid black;
+    padding:5%;
+  }

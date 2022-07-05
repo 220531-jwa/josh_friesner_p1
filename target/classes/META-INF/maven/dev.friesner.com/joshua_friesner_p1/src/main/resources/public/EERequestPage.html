@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="./CSS/EEReqPageCss.css" rel="stylesheet">
+    <link href="./CSS/modalCSS.css" rel="stylesheet">
+    
+    
+    <title>EE Request</title>
+</head>
+<body onload="setupAgain()"> 
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Welcome</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" style="color:lightcoral">Home</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="./LoginPage.html" style="color:lightcoral">Login</a>
+              </li> -->
+
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="./CreateEmployee.html" style="color:lightcoral">Create Employee</a>
+              </li> -->
+
+            </ul>
+            <form class="d-flex" role="login">
+              <!-- <input class="form-control me-2" type="username" placeholder="UserName" aria-label="Login"> -->
+              <!-- <input class="form-control me-2" type="password" placeholder="Password" aria-label="Login"> -->
+              <button class="btn btn-outline-success" type="submit" onclick="logout()">Log Out</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+      <div id="main_div" class="container" >
+        <!-- <p>Averey smells like roses and sunshine and troll farts</p> -->
+        <!-- <img src="./imgs/poppy.jpg"> -->
+        <!-- <img src="./imgs/glitter diamond.jpg"> -->
+
+
+        <div id="topViewsButts" class="container">
+            <div class="row">
+                <div class="col-6 col-sm-6">
+                    <button id="ViewOpnReqButt" type="button" class="btn btn-primary" onclick="viewReqsHandler()">View Requests</button>
+                </div>
+                <div class="col-6 col-sm-6">
+                    <button id="createReqButt" type="button" class="btn btn-primary" onclick="addReqsHandler()">Submit Request</button>
+                </div>
+                <!-- <div class="col-4 col-sm-4">
+                    <button id="testButt" type="button" class="btn btn-primary" onclick="tester()">TEST</button>
+                </div> -->
+            </div>
+        </div>
+
+
+
+        <div id="addRequestTop" class="addreqtop off">
+            <div class="container">
+                <form type="form" id="eeCreateReqForm">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div id="frmHdrDv" class="col-12 col-sm-12">
+                                    <h4>Complete Your Request Here!</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container" style="border:2px solid black">
+                        <div id="eeInfoTopRow"  class="row">
+                            <div id="eeInfoSection" class="col-12 col-sm-12">
+                                <div id="indforhdrRow" class="row frmrw">
+                                    <div class="col-12 col-sm-12">
+                                        <h6 class="frmSubHdr">Employee Information</h6>
+                                    </div>
+
+                                </div>
+                                <div class="row frmrw">
+                                    <div class="col-6 col-sm-6">
+                                        <label class="reqFrmLbl" for="first_name" content="form-control">First Name:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6">
+                                        <!-- <input  content="form-control"> -->
+                                        <input id="first_name" placeholder="First Name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                            
+
+                                <!-- <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                              </div> -->
+                            
+
+                                <div class="row frmrw">
+                                    <div class="col-6 col-sm-6">
+                                        <label class="reqFrmLbl" for="last_name" content="form-control">Last Name:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6">
+                                        <input id="last_name" placeholder="Last Name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                            
+
+                                <div class="row frmrw">
+                                    <div class="col-6 col-sm-6">
+                                        <label class="reqFrmLbl" for="eeid" content="form-control">Employee Number:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6">
+                                        <input id="eeid" placeholder="Employee #"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                                <div class="row frmrw">
+                                    <div class="col-6 col-sm-6">
+                                        <label class="reqFrmLbl" for="eeFinMngrId" content="form-control">Finance Manager ID:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6">
+                                        <input id="eeFinMngrId" placeholder="Finance Manager ID"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        
+
+                        <div id="dateTimeLocalTopRow" class="row">
+
+
+                            <div id="dateTimeLocalHdr" class="row">
+                                <div class="col-12 col-sm-12">
+                                    <h6 class="frmSubHdr">Event Information</h6>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <hr>
+                                </div>
+                            </div>
+
+                            <div id="evntNameRow" class="row">
+                                <div id="eventNameDiv" class="col-12 col-sm-12 frmMids">
+                                    <div class="col-12 col-sm-12 otherMid">
+                                        <label class="reqFrmLbl" for="evntNameInput" content="form-control">Event Name:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 otherMid">
+                                        <!-- <input  type="date" id="birthday" name="birthday"> -->
+                                        <input id="evntNameInput" placeholder="Event Name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div id="evntDescriptRow" class="row">
+                                <div id="evntDescriptDiv" class="col-12 col-sm-12 frmMids">
+                                    <div class="col-12 col-sm-12 otherMid">
+                                        <label class="reqFrmLbl" for="evntDescriptInput" content="form-control">Event Description:</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 otherMid" style="margin-bottom:2vh">
+                                        <!-- <input  type="date" id="birthday" name="birthday"> -->
+                                        <input id="evntDescriptInput" placeholder="Event Description"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+
+
+                            <div id="dateTimeLocalSec" class="row">
+                                <!-- <div id="dateInputDiv" class="row frmrw"> -->
+                                <div id="dateInputDiv" class="col-4 col-sm-4 frmMids">
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <label class="reqFrmLbl" for="dateInput" content="form-control">Date:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <!-- <input  type="date" id="birthday" name="birthday"> -->
+                                        <input id="dateInput" placeholder="Date"  type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                                <div id="timeInptDiv"  class="col-4 col-sm-4 frmMids">
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <label class="reqFrmLbl" for="timeInpt" content="form-control">Time:</label>
+                                        <!-- <input id="timeInptdos" placeholder="Time of Event"  type="time" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                                    </div>
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <input id="timeInpt" placeholder="Time"  type="time" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <!-- <div class="container cinpt"> -->
+                                            <!-- <select id="timeInpt" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                <option selected disabled>Type of Event</option>
+                                                <option>8:00:00 am</option>
+                                                <option>9:00:00 am</option>
+                                                <option>10:00:00 am</option>
+                                                <option>11:00:00 am</option>
+                                                <option>12:00:00 pm</option>
+                                                <option>1:00:00 pm</option>
+                                                <option>2:00:00 pm</option>
+                                                <option>3:00:00 pm</option>
+                                                <option>4:00:00 pm</option>
+                                                <option>5:00:00 pm</option>
+                                                <option>6:00:00 pm</option>
+                                                <option>7:00:00 pm</option>
+                                                <option>8:00:00 pm</option>
+                                                <option>9:00:00 pm</option>
+                                                <option>10:00:00 pm</option>
+                                                <option>11:00:00 pm</option>
+                                                <option>12:00:00 pm</option>
+                                                
+                                            </select> -->
+                                    
+                                    
+                                    
+                                    </div>
+                                </div>
+                                <div id="locationDiv" class="col-4 col-sm-4 frmMids">
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <label class="reqFrmLbl" for="locationInpt" content="form-control">Location:</label>
+                                    </div>
+                                    <div class="col-6 col-sm-6 otherMid">
+                                        <input id="locationInpt" placeholder="Location"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- cost -->
+                            <!-- <div class="row frmrw"> -->
+                            <div id="costGradeDiv" class="row">
+                                <div id="costDiv" class="col-6 col-sm-6 frmSubrw">
+                                    <div class="container otherMid">
+                                        <label class="reqFrmLbl" for="locationInpt" content="form-control">Cost:</label>
+                                    </div>
+                                    <div class="container otherMid">
+                                        <input id="costInpt" placeholder="Cost"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </div>
+                                <!-- 7.	grading format -->
+                                <div id="gradetDiv" class="col-6 col-sm-6 frmSubrw">
+
+                                    <div class="container otherMid">
+                                        <label class="reqFrmLbl" for="gradingInpt" content="form-control">Grading Format:</label>
+                                    </div>
+                                    <div class="container otherMid">
+                                        <!-- <input id="gradingInpt" placeholder="Grading Format"  type="select" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                                        <select id="gradeSelect" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <option selected disabled>Grading Format</option>
+                                            <option value="Percentage Grading">Percentage Grading</option>
+                                            <option value="Letter grading">Letter grading</option>
+                                            <option value="Norm-referenced grading">Norm-referenced grading</option>
+                                            <option value="Mastery grading">Mastery grading</option>
+                                            <option value="Pass/Fail">Pass/Fail</option>
+                                            <option value="Standards grading">Standards grading</option>
+                                            <option value="Narrative grading">Narrative grading</option>
+
+                                        </select>
+                                        <!-- PERCENTGRADING("Percentage Grading"),
+                                        LETTERGRADING("Letter grading"),
+                                        NORMREFERENCEDGRADING("Norm-referenced grading"),
+                                        MASTERYGRADNG("Mastery grading"),
+                                        PASSFAIL("Pass/Fail"),
+                                        STANDARDS("Standards grading"),
+                                        NARRATIVE("Narrative grading"); -->
+                                   
+                                   
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="typeWRJ" class="row">
+                                <!-- 8.	and type of event -->
+                                <!-- <div class="row frmrw"> -->
+                                    <div id="eventDeetsOneDiv" class="col-6 col-sm-6 frmSubrw">
+                                        <div class="container clbl">
+                                            <label class="reqFrmLbl" for="typeInpt" content="form-control">Type of Event:</label>
+                                        </div>
+                                        <div class="container cinpt">
+                                            <!-- <input id="typeInpt" placeholder="Type of Event"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                                            <select id="eventTypeSelect" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                <option selected disabled>Type of Event</option>
+                                                <option>University Courses</option>
+                                                <option>Seminars</option>
+                                                <option>Certification Preparation Classes</option>
+                                                <option>Certification</option>
+                                                <option>Technical Training</option>
+                                                <option>Other</option>
+                                            </select>
+
+
+                                            <!-- UNIVERSITYCOURSES("University Courses"),
+                                            SEMINARS("Seminars"),
+                                            CERTIFICATIONPREPCLASSES("Certification Preparation Classes"),
+                                            CERTIFICATION("Certification"),
+                                            TECHNICALTRAINING("Technical Training"),
+                                            OTHER("Other"); -->
+                                       
+                                       
+                                        </div>
+                                    <!-- </div> -->
+                                </div>
+
+                                <!-- 9.	work-related justification -->
+                                <!-- <div class="row frmrw"> -->
+                                    <div id="eventDeetsTwoDiv" class="col-6 col-sm-6 frmSubrw">
+                                        <div class="container clbl">
+                                            <label class="reqFrmLbldos" for="wrjInpt" content="form-control">Work-Related Justification:</label>
+                                        </div>
+                                        <div class="container cinpt">
+                                            <input id="wrjInpt" placeholder="Work-Related Justification"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        </div>
+                                    </div>
+                                <!-- </div> -->
+                                
+                                
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="container" style="border:2px solid black;margin-top:2vh">
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <button id="submitReq" type="button" class="btn btn-primary" onclick="createRequest()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div id="viewRequestTop" class="viewreqtop off">
+            <div class="row">
+                <div id="RequestTableDiv" class="col-12 col-sm-12">
+                   <!-- <table class="table">
+
+                    <tr>
+                        <th>hello</th>
+                        <th>yello</th>
+                    </tr>
+                   </table> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div id="testDiv">
+
+        </div>
+        <!-- <div>
+            <button class="penButt" onclick="testMe()"></button>
+            <input id="testin" type="number">
+            <input id="testCal" type="date">
+            <input id="testTime" type="time">
+
+
+            <div class="container">
+                <input id="testCalPlacer" type="date">
+                <input id="testTimePlacer" type="time">
+            </div>
+
+        </div> -->
+
+
+        <hr>
+       
+
+
+
+        <div id="newFormDiv" class="row  newFormDivy off">
+
+            <div class="col-12 col-sm-12">
+        
+                <form id="upDateForm" class="form-inline">
+                    <div class="form-group">
+        
+        
+                        <div class="row" style="margin-bottom:2vh">
+                                    
+                            <!-- //NAME  -->
+                            <div class="col-4 col-sm-4">
+                                <label class="form-control">Name: </label>
+                            </div>
+                            <div class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventNameLbl"  class="form-control"></label> -->
+                                        <input id="eventNameInpt" placeholder="Name"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventNamePen" type="button" class ="btn btn-primary penButt" onclick="testPenAgain(event.target)">
+                                        </button>
+                                        <!-- onclick="testPenAgain(event.target)" -->
+                                        <!-- <button id="eventNamePen"   type="button" class="btn btn-primary" onclick="testPenAgain(event.target)" >
+                                        </button> -->
+                                    </div>
+                  
+                                </div>
+                            </div>
+                        </div>
+                  
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div class="col-4 col-sm-4">
+                                <label class="form-control">Type:</label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                  
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventTypeLbl" class="form-control"></label> -->
+                                        <select id="eventTypeInpt" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled>
+                                            <option selected disabled>Type of Event</option>
+                                            <option value="UNIVERSITYCOURSES" >University Courses</option>
+                                            <option value="SEMINARS" >Seminars</option>
+                                            <option value="CERTIFICATIONPREPCLASSES" >Certification Preparation Classes</option>
+                                            <option value="CERTIFICATION" >Certification</option>
+                                            <option value="TECHNICALTRAINING" >Technical Training</option>
+                                            <option value="OTHER" >Other</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-1 col-sm-1 penButtDiv" >
+                                    <button id="eventTypePen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                    </button>
+                                </div>
+                                <!-- <label id="eventType"  class="form-control"></label>  -->
+                               
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Date </label>
+                            </div>
+                            <div class="col-8 col-sm-8">
+                                <!-- <label id="eventDateLbl" class="form-control"></label> -->
+                                <input id="eventDateInpt" placeholder="Date"  type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled>
+                            </div>
+                            <div class="col-1 col-sm-1 penButtDiv" >
+                                <button id="eventDatePen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                </button>
+                            </div>
+                        </div>
+                         <!-- Time  -->
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div id="reqTypeDDivOne" class="col-4 col-sm-4">
+                                <label class="form-control"> Time </label>
+                            </div>
+                            <div class="col-8 col-sm-8">
+                  
+                  
+                                <div class="row">
+                                    <div class="col-10 col-sm-10">
+                                         <!-- <label id="eventTimeLbl" class="form-control"></label> -->
+                                         <input id="eventTimeInpt" placeholder="Date"  type="time" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled>
+                                        <!-- <select id="eventTimeInpt" class="form-control Iamoff" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                            <option selected disabled>Event Time</option>
+                                            <option value="08:00:00" >8:00:00 am</option>
+                                            <option value="09:00:00 " >9:00:00 am</option>
+                                            <option value="10:00:00" >10:00:00 am</option>
+                                            <option value="11:00:00" >11:00:00 am</option>
+                                            <option value="12:00:00" >12:00:00 pm</option>
+                                            <option value="01:00:00" >1:00:00 pm</option>
+                                            <option value="02:00:00" >2:00:00 pm</option>
+                                            <option value="03:00:00" >3:00:00 pm</option>
+                                            <option value="04:00:00" >4:00:00 pm</option>
+                                            <option value="05:00:00" >5:00:00 pm</option>
+                                            <option value="06:00:00" >6:00:00 pm</option>
+                                            <option value="07:00:00" >7:00:00 pm</option>
+                                            <option value="08:01:00" >8:00:00 pm</option>
+                                            <option value="09:01:00" >9:00:00 pm</option>
+                                            <option value="10:01:00" >10:00:00 pm</option>
+                                            <option value="11:01:00" >11:00:00 pm</option>
+                                            <option value="12:01:00" >12:00:00 pm</option>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                                             <option value="8:00:00 am" >8:00:00 am</option>
+                                            <option value="9:00:00 am" >9:00:00 am</option>
+                                            <option value="10:00:00 am" >10:00:00 am</option>
+                                            <option value="11:00:00 am" >11:00:00 am</option>
+                                            <option value="12:00:00 am" >12:00:00 pm</option>
+                                            <option value="1:00:00 pm" >1:00:00 pm</option>
+                                            <option value="2:00:00 pm" >2:00:00 pm</option>
+                                            <option value="3:00:00 pm" >3:00:00 pm</option>
+                                            <option value="4:00:00 pm" >4:00:00 pm</option>
+                                            <option value="5:00:00 pm" >5:00:00 pm</option>
+                                            <option value="6:00:00 pm" >6:00:00 pm</option>
+                                            <option value="7:00:00 pm" >7:00:00 pm</option>
+                                            <option value="8:00:00 pm" >8:00:00 pm</option>
+                                            <option value="9:00:00 pm" >9:00:00 pm</option>
+                                            <option value="10:00:00 pm" >10:00:00 pm</option>
+                                            <option value="11:00:00 pm" >11:00:00 pm</option>
+                                            <option value="12:00:00 pm" >12:00:00 pm</option>
+                                            
+                                        </select> -->
+                                    </div>
+                                    <div class="col-2 col-sm-2 penButtDiv" >
+                                        <button id="eventTimePen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                  
+                                </div>
+                               
+                            </div>
+                        </div>
+                  
+                         Location
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div class="col-4 col-sm-4">
+                                <label class="form-control"> Location </label>
+                            </div>
+                            <div class="col-8 col-sm-8">
+                  
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventLocationLbl" class="form-control"></label> -->
+                                        <input id="eventLocationInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventLocationPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                  
+                                </div>
+                                
+                            </div>
+                  
+                  
+                        </div>
+                  
+                        <!-- Description -->
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Description: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventDescriptionLbl" class="form-control"></label> -->
+                                        <input id="eventDescriptionInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                     <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventDescriptionPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                  
+                                </div>
+                               
+                            </div>
+                        </div>
+                  
+                        <!-- Total Cost -->
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Total Cost: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventTotalCostLbl" class="form-control"></label> -->
+                                        <input id="eventTotalCostInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventTotalCostPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                  
+                                </div>
+                                
+                            </div>
+                        </div>
+        
+        
+                  
+                        <!-- Grading Format -->
+                        <div class="row" style="margin-bottom:2vh">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Grading Format: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                  
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                          <!-- <label id="eventGradingFormat" class="form-control"></label> -->
+                                        <!-- <label id="eventGradingFormatLbl" class="form-control"></label> -->
+                                        <select id="eventGradingFormatInpt" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled>
+                                            <option value="disabled" selected disabled>Grading Format</option>
+                                            <option value="PERCENTGRADING" >Percentage Grading</option>
+                                            <option value="LETTERGRADING" >Letter grading</option>
+                                            <option value="NORMREFERENCEDGRADING">Norm-referenced grading</option>
+                                            <option value="MASTERYGRADNG">Mastery grading</option>
+                                            <option value="PASSFAIL">Pass/Fail</option>
+                                            <option value="STANDARDS">Standards grading</option>
+                                            <option value="NARRATIVE">Narrative grading</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventGradingFormatPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                  
+                                </div>
+                              
+                            </div>
+                        </div>
+        
+        
+                        <!-- Reimburesment Percentage -->
+                        <div class="row" style="margin-bottom:2vh">
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Reimburesment Percentage: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventReimburesmentPercLbl" class="form-control"></label> -->
+                                        <input id="eventReimburesmentPercInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="eventReimburesmentPercPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)"></button>
+                                    </div>
+                  
+                                </div>
+                                
+                            </div>
+                        </div>
+        
+        
+                         <!-- Reimburesment Percentage -->
+                         <div class="row" style="margin-bottom:2vh">
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Amonut to be Reimbursed: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="eventReimburesmentPercLbl" class="form-control"></label> -->
+                                        <input id="amounttobereimbursedInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="amounttobereimbursedPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)"></button>
+                                    </div>
+                  
+                                </div>
+                                
+                            </div>
+                        </div>
+                  
+                        <!-- Work Related Justification -->
+                        <div class="row" style="margin-bottom:2vh">
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control"> Work Related Justification: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="workRelatedJustificationLbl" class="form-control"></label> -->
+                                        <input id="workRelatedJustificationInpt" class="form-control" type="text" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="workRelatedJustificationPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  
+                        
+                  
+                        <!-- Instructor -->
+                        <div class="row" style="margin-bottom:2vh">
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control">Instructor: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <!-- <label id="instructorLbl" class="form-control"></label> -->
+                                        <input id="instructorInpt" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-1 col-sm-1 penButtDiv" >
+                                        <button id="instructorPen"  class ="btn btn-primary penButt" type="button" onclick="testPenAgain(event.target)"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                        <div class="row">
+                            <div class="col-4 col-sm-4">
+                                <button type="button" class="btn btn-secondary" onclick="editModalFields()">Edit</button>
+                            </div>
+                            <div class="col-4 col-sm-4">
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                <button type="button" class="btn btn-secondary" onclick="closeRequestEditOne()">Close</button>
+                            </div>
+                            <div class="col-4 col-sm-4">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                  
+                  
+                        <!-- <div class="row" style="margin-bottom:2vh">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control">Instructor: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <div class="row">
+                                    <div class="col-11 col-sm-11">
+                                        <label id="instructorLbl" class="form-control IamOn"></label>
+                                        <input id="instructorInpt" class="form-control Iamoff">
+                                    </div>
+                                    <div class="col-1 col-sm-1">
+                                        
+                                            <i class="bi bi-pencil mypen" id="instructorPen"   onmousedown="testPenAgain(Event)"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil mypen" viewBox="0 0 16 16" id="instructorPen"   onmousedown="testPen(Event)">
+                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                              </svg>
+                                       
+                                    </div>
+                  
+                                </div>
+                                
+                            </div>
+                        </div> -->
+                  
+                  <!-- 
+                        <div class="row">
+                  
+                            <div  class="col-4 col-sm-4">
+                                <label class="form-control">Description: </label>
+                            </div>
+                            <div  class="col-8 col-sm-8">
+                                <label id="eventDescription" class="form-control"></label>
+                            </div>
+                        </div> -->
+                  
+                        ...
+                        </div>
+                  
+                    </div>
+            
+            
+                </form>
+            </div>
+        </div> 
+
+
+
+
+
+
+
+
+      </div>
+    
+
+            <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./Scripts/ReqAPI/UserApi.js" type="text/javascript"></script>
+    <script src="./Scripts/ReqAPI/ReqEEAPI.js" type="text/javascript"></script>
+
+    <!-- <script src="./Scripts/ReqAPI/ReqApi.js" type="text/javascript" ></script> -->
+    <!-- <script src="./Scripts/ReqAPI.js/" type="text/javascript" ></script> -->
+    <script src="./Scripts/EERequestsScrips.js" type="text/javascript"></script>
+</body>
+</html>
