@@ -296,7 +296,59 @@
     }
     
     
+    // async function getAllFinanceManagers(){
+
+
+
+    // let reqID = request.reqId
+    // let fnmngrId = user.id
+
+    // let daUSerID=user.id
+ 
+
+    // console.log(request)
+
+    // let urlfirstprt = `${daUSerID}/requests/fnmngr`
+
+    // let url = `${ReqbaseURL}${urlfirstprt}/getbyId/${reqID}/update`
+    // // http://localhost:8082/users/137/requests/fnmngr/getbyId/8/update
+    // // http://localhost:8082/users/137/requests/fnmngr/3/update 
+
+    // request = JSON.stringify(request)
+    // let response = await fetch(url,{
+    //     method:'PATCH',
+    //     header:{'Content-Type': 'application/json'},
+    //     // header:{'cors':'no-cors'},
+    //     body:request
+        
+    // });
+
+    // if (response.status === 200) {
     
+    //     let data = await await response.json();
+    //     let requests = data;
+
+    //     // for(u = 0; u<requests.length; u++){
+
+    //     //     allUserRequestsAPI.push(requests[u]);
+
+    //     // }
+    
+
+    //     return requests;
+
+
+        
+    // } else {
+
+    //     console.log("There was no data")
+    //     /*
+    //         Handle error
+    //     */
+    // }
+
+
+    // }
   
      
      

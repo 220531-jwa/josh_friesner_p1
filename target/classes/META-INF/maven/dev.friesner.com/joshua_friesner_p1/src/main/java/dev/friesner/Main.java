@@ -20,10 +20,16 @@ public class Main {
 		
 		Javalin app = Javalin.create(config ->{
 //			config.enableCorsForOrigin("http://localhost:8082");
-			config.addStaticFiles("./public/",Location.CLASSPATH);
+			
+			config.enableCorsForOrigin("http://demo-s3-statichosting.s3-website-us-east-1.amazonaws.com");
+			
+			
+//			config.addStaticFiles("./public/",Location.CLASSPATH);  // commenting out in order to access from s3 bucket instead of local server.
 		});
 		
+		
 		app.start(8082);
+
 		
 		app.routes(()-> {
 			path("/login",()->{

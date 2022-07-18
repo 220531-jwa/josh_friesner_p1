@@ -15,3 +15,13 @@ height:auto;   /* Height of the footer */
 background:black;
 
 }
+
+
+#sideNav{
+    background-color: black;
+    display:flex;
+    float: left;
+    width:15%;
+    height:100%;
+    /* max-height: 850px; */
+}

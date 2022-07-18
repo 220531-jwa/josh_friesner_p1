@@ -27,6 +27,8 @@
     width:50%;
     border:2px solid black;
     padding:5%;
+    margin-left:25%;
+    margin-bottom:8vh;
   }
 
 .otherMid{
@@ -138,29 +140,63 @@
     display:auto;
 }
 
+.testersoner{
+    width:100%;
+    
+    margin-left:50px;
+}
+
+.penButtDivtest{
+    /* width:20%; */
+    /* border:solid black 2px; */
+    /* margin-left:50px; */
+    padding:35px;
+}
+
 .penButt{
     background-color: white;
     color:green;
     opacity: 1;
     border-radius:50%;
     border:.2vh lightcoral solid;
+    /* width:10%; */
+    /* height:10%; */
+    content: "\270E";
     /* content: "\270E" */
     /* content: "\F4CB"; */
 }
 
 .penButt::before{
     /* content: "\F4CB"; */
+    border-radius:50%;
     content: "\270E";
-    
     color:green;
+    max-height:10%;
+    opacity: 1;
+    /* width:10%; */
   }
 
   .penButt:hover{
-    background-color: black;
+    background-color: lightcoral;
     color:green;
     opacity: 1;
     border-radius:50%;
     border:.2vh lightcoral solid;
+
+    content: "\270E";
+    /* content: "\270E" */
+    /* content: "\F4CB"; */
+}
+
+.penButt::content{
+    /* background-color: lightcoral; */
+    color:green;
+    align-content: center;
+    /* opacity: 1; */
+    /* border-radius:50%; */
+    /* border:.2vh lightcoral solid; */
+    /* width:10%; */
+    /* height:10%; */
     /* content: "\270E" */
     /* content: "\F4CB"; */
 }

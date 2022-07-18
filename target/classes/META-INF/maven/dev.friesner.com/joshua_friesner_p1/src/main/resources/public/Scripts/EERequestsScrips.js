@@ -5,7 +5,47 @@ let baseURLEESCRIPT = "http://localhost:8082/"
 var viewReqsOpen = false;
 var createReqsOpen = false;
 var modalEventShowing = false;
-var user = JSON.parse(sessionStorage.getItem("user"))
+// var user = JSON.parse(sessionStorage.getItem("user"))
+var userVar = "";
+
+
+var user = {
+    id:null,
+    first_name:null,
+    last_name:null,
+    email:null,
+    phone:null,
+    dob:null,
+    address:null,
+    city:null,
+    state:null,
+    zip:null,
+    //login
+    username:null, // make sure this is a unique field
+    passwrd:null,
+    role:null,
+    financeMngrId:null,
+    //reimbursements
+    reimbursement_amount:null,
+    //	private byte[] employee_pic,
+    //	private File[] employee_pic,
+    employee_pic:null,
+}
+
+
+async function updateIncomingUser(incomingUser){
+
+    Object.keys(incomingUser).forEach((key, index) => {
+        user[key] = incomingUser[key];
+      });
+
+    
+
+}
+
+
+
+
 var allUserRequests = [];
 
 
@@ -721,13 +761,22 @@ async function setupModalAgain (){
        
         let evDateInpt = document.getElementById("eventDateInpt");
 
+        console.log("I am right before the if statement")
+
         if(reqEvent.eventDate){
 
-            // let date = new Date(reqEvent.eventDate)
-            // let dateISO = date.toISOString();
-            // let dateString = dateISO.toString();
-            // let [breakDate, breakTime] = dateString.split("T",1);
-            // let dateArray = breakDate.split("/",2);
+            let dateToAlter = reqEvent.eventDate;
+
+            console.log(dateToAlter)
+
+            let date = new Date(reqEvent.eventDate)
+            let dateISO = date.toISOString();
+            let dateString = dateISO.toString();
+            let [breakDate, breakTime] = dateString.split("T",1);
+            let dateArray = breakDate.split("/",2);
+
+            console.log(dateArray)
+            evDateInpt.value = dateArray[0]
 
 
 
@@ -758,10 +807,10 @@ async function setupModalAgain (){
       
         // let timeISO = evntTimeDate.toISOString();
         // let timeString = timeISO.toString();
-        // console.log(timeString)
+        
         // let [breakDatedos, breakTimedos] = dateString.split("T",1)
         // let timeArray = breakTimedos.split(":",2);
-        // console.log(timeArray)
+        
 
 
 
@@ -845,7 +894,7 @@ async function setupModalAgain (){
         if(reqEvent.eventTotalCost){
 
             // eventTotalCostLbl.innerText = reqEvent.eventTotalCost
-            evDescriptInpt.value = reqEvent.eventTotalCost
+            eventTotalCostInpt.value = reqEvent.eventTotalCost
 
         }else{
 
@@ -1028,7 +1077,7 @@ function modalTearDown(i){
 
         // modalBody.remove(wrapperDiv);
 
-        // console.log("ran remove child modal tear down")
+        
 
         // wrapperDiv.id = "modalWrapper";
     }
@@ -1058,6 +1107,15 @@ function modalTearDown(i){
 
 
 function setupEE(){
+
+    let incomingUser = sessionStorage.getItem("user");
+    incomingUser = JSON.parse(incomingUser);
+    updateIncomingUser(incomingUser);
+
+    console.log("Here is user")
+    console.log(user);
+
+
     eeId = document.getElementById("eeid");
     first_name = document.getElementById("first_name");
     last_name = document.getElementById("last_name");
@@ -1069,9 +1127,49 @@ function setupEE(){
     last_name.value = user.last_name;
     eeFinMangrID.value = user.financeMngrId
 
+
+
+
 }
 
+// // HANDLE THE DATE AND TIME FIELD
+// const dateStr = dateInput+ " " + timeInpt;
+    
+// const newString = dateStr.replace("-","/").replace("-","/");
+// const [dateRelated, timeRelated] = newString.split(' ');
 
+// // timeRelated = timeRelated.replace("-","/");
+// console.log(dateRelated); // 👉️ "06/24/2022"
+
+// console.log(timeRelated); // 👉️ "09:30:05"
+
+// const myArray = dateRelated.split("/")
+
+// myArray[0]
+
+// const year = myArray[0];
+// const month = myArray[1];
+// const day = myArray[2];
+// console.log("year " + year)
+// console.log("month " + month)
+// console.log("day " + day)
+// const constMyNewDate = `${month}/${day}/${year}`;
+
+// // console.log("here is my newDate " + constMyNewDate)
+// const [monthdos, yeardos, daydos] = constMyNewDate.split('/');
+// const [hours, minutes, seconds] = timeRelated.split(':');
+
+// const date2 = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
+// const date3 = new Date(+year, month - 1, +day);
+// // console.log(date2); // 👉️ Fri Jun 24 2022 09:30:05
+// console.log(date2)
+// reqVar
+// reqEvent.eventDate = date2;
+// // 👇️ Get timestamp
+// const timestamp = date2.getTime();
+// const evntDate = date2.getDate();
+
+// console.log("I am time stamp " + evntDate)
 
 
 
@@ -1237,7 +1335,7 @@ async function showAllReqsHandler(){
     //  Appending Table Headers to Table.
     for(reqProp in allUserRequests[0]){
 
-        console.log(reqProp)
+        // console.log(reqProp)
 
         let tblHdr = document.createElement("th")
 
@@ -1577,14 +1675,14 @@ async function testPenAgain(e){
             let percamnt ="0"
             switch(newVal) {
                 case newVal = "University Courses":
-                // code block
-                newVal = "UNIVERSITYCOURSES"
-                percamnt =".80"
+                    // code block
+                    newVal = "UNIVERSITYCOURSES"
+                    percamnt =".80"
                 break;
                 case newVal = "Seminars":
-                // code block
-                newVal = "SEMINARS"
-                percamnt =".60"
+                    // code block
+                    newVal = "SEMINARS"
+                    percamnt =".60"
                 break;
                 case newVal = "Certification Preparation Classes":
                     // code block
@@ -1593,8 +1691,8 @@ async function testPenAgain(e){
                     
                     break;
                 case newVal = "Certification":
-                // code block
-                newVal = "CERTIFICATION"
+                    // code block
+                    newVal = "CERTIFICATION"
                     percamnt ="1"
                     break;
                 case newVal = "Technical Training":
@@ -1603,10 +1701,10 @@ async function testPenAgain(e){
                     percamnt =".90"
                 break;
                 case newVal = "Other":
-                // code block
-                newVal = "OTHER"
+                    // code block
+                    newVal = "OTHER"
                     percamnt ="0"
-                    break;
+                break;
                 // default:
                 // code block
             }
@@ -1627,6 +1725,10 @@ async function testPenAgain(e){
 
             console.log(reqVar);
             inptEl.setAttribute("disabled","disabled")
+            let reimbu = document.getElementById("eventReimburesmentPercInpt")
+            reimbu.value = percamnt;
+
+        }else if(elID =="eventReimburesmentPerc"){
 
         }else{
 
@@ -1703,46 +1805,61 @@ function createRequest(){
     let eventName = document.getElementById("evntNameInput").value;
     
     let dateInput=document.getElementById("dateInput").value;
-    let timeInpt = document.getElementById("timeInpt").value;
+    let timeInpt = document.getElementById("timeInpt");
+
+
+    var currentdate = new Date(dateInput);
+    var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+
+    console.log(datetime);
+
+    console.log(timeInpt.value)
+    let timeinptval = timeInpt.value
+    timeinptval = timeinptval + ":00"
    
-    // HANDLE THE DATE AND TIME FIELD
-    const dateStr = dateInput+ " " + timeInpt;
+    // // HANDLE THE DATE AND TIME FIELD
+    // const dateStr = dateInput+ " " + timeInpt;
     
-    const newString = dateStr.replace("-","/").replace("-","/");
-    const [dateRelated, timeRelated] = newString.split(' ');
+    // const newString = dateStr.replace("-","/").replace("-","/");
+    // const [dateRelated, timeRelated] = newString.split(' ');
 
-    // timeRelated = timeRelated.replace("-","/");
-    console.log(dateRelated); // 👉️ "06/24/2022"
+    // // timeRelated = timeRelated.replace("-","/");
+    // console.log(dateRelated); // 👉️ "06/24/2022"
     
-    console.log(timeRelated); // 👉️ "09:30:05"
+    // console.log(timeRelated); // 👉️ "09:30:05"
 
-    const myArray = dateRelated.split("/")
+    // const myArray = dateRelated.split("/")
 
-    myArray[0]
+    // myArray[0]
     
-    const year = myArray[0];
-    const month = myArray[1];
-    const day = myArray[2];
-    console.log("year " + year)
-    console.log("month " + month)
-    console.log("day " + day)
-    const constMyNewDate = `${month}/${day}/${year}`;
+    // const year = myArray[0];
+    // const month = myArray[1];
+    // const day = myArray[2];
+    // console.log("year " + year)
+    // console.log("month " + month)
+    // console.log("day " + day)
+    // const constMyNewDate = `${month}/${day}/${year}`;
 
-    // console.log("here is my newDate " + constMyNewDate)
-    const [monthdos, yeardos, daydos] = constMyNewDate.split('/');
-    const [hours, minutes, seconds] = timeRelated.split(':');
+    // // console.log("here is my newDate " + constMyNewDate)
+    // const [monthdos, yeardos, daydos] = constMyNewDate.split('/');
+    // const [hours, minutes, seconds] = timeRelated.split(':');
 
-    const date2 = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
-    const date3 = new Date(+year, month - 1, +day);
-    // console.log(date2); // 👉️ Fri Jun 24 2022 09:30:05
-    console.log(date2)
-    reqVar
-    reqEvent.eventDate = date2;
+    // const date2 = new Date(+year, month - 1, +day, +hours, +minutes, +seconds);
+    // const date3 = new Date(+year, month - 1, +day);
+    // // console.log(date2); // 👉️ Fri Jun 24 2022 09:30:05
+    // console.log(date2)
+    // reqVar
+    // reqEvent.eventDate = date2;
     // 👇️ Get timestamp
-    const timestamp = date2.getTime();
-    const evntDate = date2.getDate();
+    // const timestamp = date2.getTime();
+    // const evntDate = date2.getDate();
     
-    console.log("I am time stamp " + evntDate)
+    // console.log("I am time stamp " + evntDate)
     
     
     let locationInpt=document.getElementById("locationInpt").value; 
@@ -1832,26 +1949,37 @@ function createRequest(){
           // code block
       }
 
-      console.log("here is evntType " + evntType);
+    //   console.log("here is evntType " + evntType);
 
     let wrjInpt=document.getElementById("wrjInpt").value; 
     let eventDescript = document.getElementById("evntDescriptInput").value;
 
     let user = JSON.parse(sessionStorage.getItem("user"));
 
-    let newTiem = new Date(timeInpt);
 
+    console.log(timeInpt);
+
+    let newTiem = new Date(timeInpt);
+    let newTimeHr = newTiem.getHours();
+    let newTimeMin = newTiem.getMinutes();
+    let newTimeSec = newTiem.getSeconds();
+    finallyTimer = timeInpt + ":00"
+
+    // let finallyTimer = newTimeHr +":" + newTimeMin + ":" +newTimeSec
+    console.log(newTiem)
+    console.log(newTimeHr.toString)
+    // newTiem.getTime()
 
     let percentage = percamnt.valueOf();
     let amnttoreimb= costInpt * percentage;
 
-    console.log(amnttoreimb);
+    
 
     let Evnt={
         eventName:eventName,
-        eventDate:JSON.stringify(date2),
+        eventDate:dateInput,
         // eventTime:timeInpt,
-        eventTime:newTiem,
+        eventTime:timeinptval,
         eventLocation:locationInpt,
         eventDescription:eventDescript,
         eventTotalCost:costInpt,
@@ -1919,7 +2047,7 @@ function createRequest(){
         presentation:null,
         certUpLoad:null,
         event:Evnt,
-        lastupdatedDate:Timzy,
+        lastupdatedDate:finalTimzy,
         amounttobereimbursed:amnttoreimb
     }
     
@@ -2080,15 +2208,27 @@ function addReqsHandler(){
 }
 
 
+async function setUpFinanceManagersSubmitReqBox(){
+    getAllFinanceManagers()
+}
+
+
 function setupAgain(){
     setup();
 }
 
 function setup(){
+    setErrUpTest();
+
     setupEE();
     
 
     allRequestsHandler();
+    setErrUp("FortheNav",user.role);
+    // setErrUp("main_div",user.role);
+    // main_div
+    // setupNav("FortheNav",user.role);
+    // setUpFinanceManagersSubmitReqBox();
     // setupRequests();
     // setupModal(reqVar);
     // setupModalAgain(reqVar);
@@ -2179,31 +2319,11 @@ var OpenFormDivId =""
 
 
 function closeRequestEditOne (){
+
+
     let newFormDiv = document.getElementById("newFormDiv");
-    
-    let formToReShowChild = document.getElementById(OpenFormDivId);
-
-
-
+    OpenFormDivId = "viewRequestTop"
    
-    let formToReShowParentID = formToReShowChild.parentElement.getAttribute("id");
-
-
-    console.log(OpenFormDivId)
-
-    if(OpenFormDivId == "AssociateRequestTableDiv"){
-        // AllAssociateRequestTableDiv
-
-        formToReShowParentID = "viewRequestTop"
-
-    }else if(OpenFormDivId=="AllAssociateRequestTableDiv"){
-
-        formToReShowParentID = "viewRequestTop"
-
-    }else if(OpenFormDivId=="RequestTableDiv"){
-        
-        formToReShowParentID = "viewRequestTop"
-    }
 
 
 
@@ -2214,15 +2334,6 @@ function closeRequestEditOne (){
     formToReShow.classList.toggle("off")
 }
 
-
-
-// function showModal(){
-
-//     let tester = document.getElementById("testDiv");
-//     tester.innerHTML = myModalElement
-
-
-// }
 
 
 
